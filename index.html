@@ -4,26 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Summit Custom Cards</title>
+    <title>Summit Custom Cards - Custom Football Cards</title>
 </head>
 <body>
     <header>
-        <h1>Summit Custom Cards</h1>
+        <div class="header-container">
+            <h1>⚽ Summit Custom Cards</h1>
+            <p class="tagline">Premium Custom Football Trading Cards</p>
+            <button id="cart-btn" class="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</button>
+        </div>
     </header>
+
+    <nav class="navbar">
+        <a href="#products" class="nav-link">Shop</a>
+        <a href="#customize" class="nav-link">Customize</a>
+        <a href="#about" class="nav-link">About</a>
+    </nav>
+
     <main>
-        <section id="product-list">
-            <h2>Products</h2>
-            <!-- Dynamic product listings will go here -->
+        <!-- Products Section -->
+        <section id="products" class="section">
+            <h2>Available Cards</h2>
+            <div id="product-list" class="product-grid">
+                <!-- Products will load here dynamically -->
+            </div>
         </section>
-        <section id="customizer">
-            <h2>Card Customizer</h2>
-            <!-- Card customization options will go here -->
+
+        <!-- Customizer Section -->
+        <section id="customize" class="section">
+            <h2>Design Your Custom Card</h2>
+            <div class="customizer-container">
+                <div class="card-preview">
+                    <div id="card-display" class="card">
+                        <h3 id="player-name">Your Name</h3>
+                        <p id="player-number">00</p>
+                        <p id="player-position">Position</p>
+                        <p id="card-text-color">Custom Text</p>
+                    </div>
+                </div>
+                <form id="customizer-form" class="customizer-form">
+                    <input type="text" id="player-name-input" placeholder="Player Name" value="Your Name" required>
+                    <input type="number" id="player-number-input" placeholder="Jersey Number" value="00" min="0" max="99" required>
+                    <input type="text" id="player-position-input" placeholder="Position" value="Position" required>
+                    <select id="card-background">
+                        <option value="gold">Gold Background</option>
+                        <option value="silver">Silver Background</option>
+                        <option value="blue">Blue Background</option>
+                        <option value="red">Red Background</option>
+                    </select>
+                    <button type="button" id="add-custom-btn" class="btn-primary">Add Custom Card to Cart</button>
+                </form>
+            </div>
         </section>
-        <section id="checkout">
-            <h2>Checkout</h2>
-            <!-- Checkout form and cart summary will go here -->
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2>About Summit Custom Cards</h2>
+            <p>Create premium custom football trading cards with our easy-to-use builder. Perfect for teams, coaches, and collectors!</p>
+            <ul>
+                <li>✨ High-quality custom cards</li>
+                <li>🎨 Easy customization</li>
+                <li>🚚 Fast shipping</li>
+                <li>💰 Affordable pricing</li>
+            </ul>
         </section>
     </main>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will load here -->
+            </div>
+            <div class="cart-summary">
+                <h3>Subtotal: $<span id="subtotal">0.00</span></h3>
+                <h3>Tax (10%): $<span id="tax">0.00</span></h3>
+                <h3 class="total">Total: $<span id="total">0.00</span></h3>
+            </div>
+            <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content checkout-form">
+            <span class="close">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <h3>Shipping Information</h3>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Street Address" required>
+                <input type="text" placeholder="City" required>
+                <input type="text" placeholder="State" required>
+                <input type="text" placeholder="ZIP Code" required>
+                
+                <h3>Payment Information</h3>
+                <input type="text" placeholder="Card Name" required>
+                <input type="text" placeholder="Card Number (1234 5678 9012 3456)" required>
+                <div class="form-row">
+                    <input type="text" placeholder="MM/YY" required>
+                    <input type="text" placeholder="CVC" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Summit Custom Cards. All rights reserved.</p>
+    </footer>
+
     <script src="cart.js"></script>
     <script src="builder.js"></script>
 </body>
