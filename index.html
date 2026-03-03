@@ -1,189 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summit Custom Cards | Builder</title>
-    <style>
-        :root {
-            --summit-navy: #002147;
-            --summit-silver: #C0C0C0;
-            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
-        }
-
-        body {
-            background: #0a0a0a;
-            color: white;
-            font-family: 'Arial Black', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            background: var(--summit-navy);
-            width: 100%;
-            padding: 20px 0;
-            border-bottom: 4px solid var(--summit-silver);
-            text-align: center;
-        }
-
-        /* THE CARD */
-        .card-container {
-            margin: 30px 0;
-            perspective: 1000px;
-        }
-
-        .trading-card {
-            width: 320px;
-            height: 450px;
-            background: var(--summit-navy);
-            border: 12px solid var(--summit-silver);
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-        }
-
-        #previewImg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(0, 33, 71, 0.9);
-            border-top: 3px solid var(--summit-silver);
-            padding: 15px 0;
-            text-align: center;
-        }
-
-        .card-overlay h2 { margin: 0; font-size: 1.4rem; letter-spacing: 1px; }
-        .stats { font-size: 1rem; color: var(--summit-silver); margin-top: 5px; }
-
-        /* THE FORM */
-        .editor {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 15px;
-            width: 320px;
-            margin-bottom: 50px;
-        }
-
-        label { display: block; font-size: 0.8rem; color: #888; margin-top: 10px; }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            background: #222;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .order-btn {
-            width: 100%;
-            margin-top: 25px;
-            padding: 18px;
-            background: #28a745;
-            border: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>Summit Custom Cards</title>
 </head>
 <body>
-
     <header>
-        <h1>SUMMIT CUSTOM CARDS</h1>
+        <h1>Summit Custom Cards</h1>
     </header>
-
-    <div class="card-container">
-        <div class="trading-card" id="cardElement">
-            <img id="previewImg" src="https://via.placeholder.com/320x450?text=Upload+Photo">
-            <div class="card-overlay">
-                <h2 id="displayName">PLAYER NAME</h2>
-                <div class="stats">
-                    <span id="displayPos">POS</span> • <span id="displayNum">#00</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="editor">
-        <label>1. Player Photo</label>
-        <input type="file" id="fileIn" accept="image/*">
-
-        <label>2. Full Name</label>
-        <input type="text" id="nameIn" placeholder="Enter Name">
-
-        <label>3. Jersey Number</label>
-        <input type="text" id="numIn" placeholder="e.g. 14">
-
-        <label>4. Position</label>
-        <select id="posIn">
-            <option value="QB">Quarterback</option>
-            <option value="WR">Wide Receiver</option>
-            <option value="RB">Running Back</option>
-            <option value="LB">Linebacker</option>
-        </select>
-
-        <label>5. Design Style</label>
-        <select id="styleIn">
-            <option value="classic">Summit Navy (Standard)</option>
-            <option value="gold">Gold Prizm (+$5.00)</option>
-        </select>
-
-        <button class="order-btn" onclick="sendOrder()">PLACE ORDER & PAY</button>
-    </div>
-
-    <script>
-        // Update Name
-        document.getElementById('nameIn').oninput = function() {
-            document.getElementById('displayName').innerText = this.value.toUpperCase() || "PLAYER NAME";
-        };
-
-        // Update Number
-        document.getElementById('numIn').oninput = function() {
-            document.getElementById('displayNum').innerText = "#" + (this.value || "00");
-        };
-
-        // Update Position
-        document.getElementById('posIn').onchange = function() {
-            document.getElementById('displayPos').innerText = this.value;
-        };
-
-        // Update Image
-        document.getElementById('fileIn').onchange = function(e) {
-            if (e.target.files[0]) {
-                document.getElementById('previewImg').src = URL.createObjectURL(e.target.files[0]);
-            }
-        };
-
-        // Update Style
-        document.getElementById('styleIn').onchange = function() {
-            const card = document.getElementById('cardElement');
-            if (this.value === 'gold') {
-                card.style.border = "12px solid gold";
-                card.style.boxShadow = "0 0 40px gold";
-            } else {
-                card.style.border = "12px solid #C0C0C0";
-                card.style.boxShadow = "0 15px 35px rgba(0,0,0,0.8)";
-            }
-        };
-
-        function sendOrder() {
-            alert("Order Request Received! I will contact you to finalize the design and shipping.");
-        }
-    </script>
+    <main>
+        <section id="product-list">
+            <h2>Products</h2>
+            <!-- Dynamic product listings will go here -->
+        </section>
+        <section id="customizer">
+            <h2>Card Customizer</h2>
+            <!-- Card customization options will go here -->
+        </section>
+        <section id="checkout">
+            <h2>Checkout</h2>
+            <!-- Checkout form and cart summary will go here -->
+        </section>
+    </main>
+    <script src="cart.js"></script>
+    <script src="builder.js"></script>
 </body>
 </html>
